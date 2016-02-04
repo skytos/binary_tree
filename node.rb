@@ -26,4 +26,14 @@ class Node
     yield key
     right.each(&b) if right
   end
+
+  def include?(search)
+    if search == key
+      true
+    elsif search < key
+      !!left && left.include?(search)
+    else
+      !!right && right.include?(search)
+    end
+  end
 end

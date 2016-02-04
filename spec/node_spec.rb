@@ -92,4 +92,34 @@ describe Node do
       end
     end
   end
+
+  describe '#include?' do
+    context "when passed the root node's key" do
+      it 'is true' do
+        expect(node.include?(key)).to be true
+      end
+    end
+
+    context "when passed a key that has been inserted" do
+      let(:another_key) {12}
+      before do
+        node.insert(smaller_key)
+        node.insert(another_key)
+      end
+
+      it 'is true' do
+        expect(node.include?(another_key)).to be true
+      end
+    end
+    context "when passed a key that has not been inserted" do
+      let(:another_key) {12}
+      before do
+        node.insert(smaller_key)
+      end
+
+      it 'is false' do
+        expect(node.include?(another_key)).to be false
+      end
+    end
+  end
 end
