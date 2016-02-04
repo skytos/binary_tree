@@ -1,5 +1,4 @@
 class Node
-  include Enumerable
   attr_reader :key, :left, :right
   def initialize(key)
     @key = key
